@@ -470,8 +470,26 @@ div[role="main"] {
                                     margin: 5px 5px 0 0;
                                     padding: 0 0.5em;
                                 }
-                              
-                            } /* end menu-section-item-dietary-props */
+                                .nutFree-icon {
+                                    &:before {
+                                        content: "nf";
+                                    }  
+                                }
+                                .vegetarian-icon {
+                                    &:before {
+                                        content: "v";
+                                    }
+                                }
+                                .glutenFree-icon {
+                                    &:before {
+                                        content: "gf";
+                                    }
+                                }
+                                .dairyFree-icon {
+                                    &:before {
+                                        content: "df";
+                                    }
+                                }
                              .not-spicy-icon.dietary-icon {
                                     display: none;
                                 }
@@ -502,6 +520,7 @@ div[role="main"] {
                                         content: "ls";
                                     }
                                 }
+                            } /* end menu-section-item-dietary-props */
                             .menu-item-description, .menu-subsection-item-description {
                                 margin-bottom: 0.5em;
                                 width: 100%;
