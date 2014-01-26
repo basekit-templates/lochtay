@@ -185,15 +185,13 @@ header {
     .companyname {
         margin: 0.75em 0 1.5em;
         a {
-            &:hover {
-                    text-decoration: none;
-                }
-            h1 {
-                color: @font-swatch10-color;
+            color: @font-swatch10-color;
                 font-family:@font-swatch10-font-family;
                 font-size:@font-swatch10-font-size;
                 font-weight: @font-swatch10-font-weight;
-            }
+            &:hover {
+                    text-decoration: none;
+                }
         }
     }
     nav {
@@ -345,11 +343,36 @@ div[role="main"] {
                        -moz-column-count: 1;
                        -webkit-column-count: 1;
                     }
-                    
+                    > * {
+                        break-inside: avoid;
+                        -webkit-column-break-inside: avoid;
+                        -moz-column-break-inside: avoid;
+                        -ms-column-break-inside: avoid;
+                        -o-column-break-inside: avoid;
+                    }
+                    &.odd {
+                        -webkit-column-count: 3;
+                        -moz-column-count: 3;
+                        column-count: 3;
+                         &.1-columns {
+                            -webkit-column-count: 1;
+                            -moz-column-count: 1;
+                            column-count: 1;
+                        }
+                        @media @desktop {
+                            -webkit-column-count: 1;
+                            -moz-column-count: 1;
+                            column-count: 1;  
+                        }
+                     }
                     li {    /* menu-item */
                         position: relative;
                         display: inline-block;
+                        width: 100%;
                         -webkit-column-break-inside: avoid;
+                        -moz-column-break-inside: avoid;
+                        -ms-column-break-inside: avoid;
+                        -o-column-break-inside: avoid; 
                         &.menu-item-promoted { /* menu-item-promoted */
                             background-color: fade(@color-swatch3, 15%);
                             border-radius: 6px;
@@ -380,14 +403,15 @@ div[role="main"] {
                                 font-family: @font-swatch3-font-family;
                                 color: @font-swatch3-color;
                             }
-                            img {   /* menu-item-image */
-                                border: none;
-                                display: block;
-                                -webkit-border-radius: 5px;
-                                -moz-border-radius: 5px;
-                                border-radius: 5px;
-                                margin: 0.75em 0 0.5em;
-                                width: 100%;
+                            .menu-item-image-wrap {
+                                background-size: cover;
+                                background-repeat: no-repeat;
+                                height: 180px;
+                                margin: 0.25em 0 0.75em;
+                                background-position: center;
+                                img {
+                                    display: none;
+                                }
                             }
                             .menu-item-price p {   /* standard-price */
                                 font-family: @font-swatch5-font-family;
@@ -446,32 +470,38 @@ div[role="main"] {
                                     margin: 5px 5px 0 0;
                                     padding: 0 0.5em;
                                 }
-                                .vegetarian-icon {
-                                    &:after {
-                                        content:"v";
-                                        color: @color-swatch3;
-                                    }              
-                                }
-                                .glutenFree-icon {
-                                    &:after {
-                                        content:"gf";
-                                        color: @color-swatch3;
-                                    } 
-                                }
-                                .nutFree-icon {
-                                    &:after {
-                                        content:"nf";
-                                        color: @color-swatch3;
-                                    } 
-                                }
-                                .dairyFree-icon {
-                                    &:after {
-                                        content:"df";
-                                        color: @color-swatch3;
-                                    } 
-                                }
+                              
                             } /* end menu-section-item-dietary-props */
-
+                             .not-spicy-icon.dietary-icon {
+                                    display: none;
+                                }
+                                .medium-spicy-icon.dietary-icon {
+                                    border-color: orange;
+                                    color: orange;
+                                }
+                                .medium-spicy-icon {
+                                    &:after {
+                                        content: "ms";
+                                    }
+                                }
+                                .hot-icon.dietary-icon {
+                                    border-color: #860b14;
+                                    color: #860b14;
+                                }
+                                .hot-icon {
+                                    &:after {
+                                        content: "s";
+                                    }
+                                }
+                                .spicy-icon.dietary-icon {
+                                    border-color: green;
+                                    color: green;
+                                }
+                                .spicy-icon {
+                                    &:after {
+                                        content: "ls";
+                                    }
+                                }
                             .menu-item-description, .menu-subsection-item-description {
                                 margin-bottom: 0.5em;
                                 width: 100%;
