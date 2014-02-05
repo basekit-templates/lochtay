@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="row">
-    <header class="three columns">
+    <header class="header three cols">
         {{widget('logo', 'lochtay-logo', {"defaultlogo": asset('images/lochtay-logo.png')})|raw}}
         {{widget('companyname', 'loch-tay', {"business": "Loch Tay"})|raw}}
         <nav class="text-center">
@@ -12,9 +12,9 @@
         </nav>
     </header>
 
-    <div role ="main" class="nine columns">
+    <div role ="main" class="nine cols">
         {{widget('menu', 'menu1', {})|raw}}
-        <footer>
+        <footer class="footer">
             {{widget('content', 'footer-header', {content: '<h1>Contact Us</h1>', lines: 'all'})|raw}}
             {{widget('companyaddress', 'footer-address', {})|raw}}
             {{widget('clicktocall', 'footer-phone', {phoneText: '0800 123 123'})|raw}}

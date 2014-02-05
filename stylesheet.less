@@ -15,6 +15,8 @@ Table of Contents -
    1. Default
    =============================== */
 
+@import "@{templateCommon}/basekit-bootstrap.less";
+
 body {
     background-color: grey;
     background-image: image('/images/lochtay-bg.jpg');
@@ -26,7 +28,10 @@ body {
     }
 }
 
-.wrapper { margin: 0 7%; }
+.wrapper { 
+    width: auto;
+    margin: 0 7%; 
+}
 
 a {
     font-family:@font-swatch5-font-family;
@@ -129,14 +134,14 @@ ol, li, ul {
     min-width: 0; 
     margin: 0 -15px; 
 }
-.column, .columns { 
+.col, .cols { 
     float: left; 
     min-height: 1px; 
     position: relative; 
 }
 
-[class*="column"] + [class*="column"]:last-child { float: right; }
-[class*="column"] + [class*="column"].end { float: left; }
+[class*="col"] + [class*="col"]:last-child { float: right; }
+[class*="col"] + [class*="col"].end { float: left; }
 
 .three, .row .three { 
     width: 22%; 
@@ -164,7 +169,7 @@ ol, li, ul {
    4. Header
    =============================== */
 
-header {
+.header {
     background-color: @color-swatch6;
     height: 100%;
     padding: 3.5em 0;
@@ -196,6 +201,7 @@ header {
     }
     nav {
         .menusections {
+            margin: 0;
             ul {
                 display: block;
                 list-style: none;
@@ -211,8 +217,9 @@ header {
                 }
                 li {
                     padding: 0.8em 0;
+                    margin: 0;
+                    width: 100%;
                     @media @tablet {
-                        width: 100%;
                         padding: 1.25em 0 1em;
                         border-bottom: 1px solid fade(@color-swatch5, 25%);
                     }
@@ -306,6 +313,9 @@ div[role="main"] {
                     border-bottom:1px dotted rgba(0, 0, 0, 0.2);
                     margin-bottom: 1.5em;
                     }
+                }
+                .menu-subsection {
+                    border: none;
                 }
                 .menu-subsection-header {
                     @media only screen and (max-width: 550px) {
@@ -469,8 +479,9 @@ div[role="main"] {
                                     border: 2px solid @color-swatch6;
                                     margin: 5px 5px 0 0;
                                     padding: 0 0.5em;
+                                    width: auto;
                                 }
-                                .nutFree-icon {
+                                .nutfree-icon {
                                     &:before {
                                         content: "nf";
                                     }  
@@ -480,17 +491,22 @@ div[role="main"] {
                                         content: "v";
                                     }
                                 }
-                                .glutenFree-icon {
+                                .vegan-icon {
+                                    &:before {
+                                        content: "vegan";
+                                    }
+                                }
+                                .glutenfree-icon {
                                     &:before {
                                         content: "gf";
                                     }
                                 }
-                                .dairyFree-icon {
+                                .dairyfree-icon {
                                     &:before {
                                         content: "df";
                                     }
                                 }
-                             .not-spicy-icon.dietary-icon {
+                                .not-spicy-icon.dietary-icon {
                                     display: none;
                                 }
                                 .medium-spicy-icon.dietary-icon {
@@ -498,7 +514,7 @@ div[role="main"] {
                                     color: orange;
                                 }
                                 .medium-spicy-icon {
-                                    &:after {
+                                    &:before {
                                         content: "ms";
                                     }
                                 }
@@ -507,7 +523,7 @@ div[role="main"] {
                                     color: #860b14;
                                 }
                                 .hot-icon {
-                                    &:after {
+                                    &:before {
                                         content: "s";
                                     }
                                 }
@@ -516,10 +532,10 @@ div[role="main"] {
                                     color: green;
                                 }
                                 .spicy-icon {
-                                    &:after {
+                                    &:before {
                                         content: "ls";
                                     }
-                                }
+                                }                
                             } /* end menu-section-item-dietary-props */
                             .menu-item-description, .menu-subsection-item-description {
                                 margin-bottom: 0.5em;
@@ -610,12 +626,6 @@ div[role="main"] {
                             background-repeat: no-repeat;
                             background-position: center;
                         }
-                        .vegetarian-icon {
-                            background-image: image('/images/veggie-icon.png');
-                        }
-                        .glutenFree-icon {
-                            background-image: image('/images/gf-icon.png');
-                        }
                         dd {    /* text for icon */
                             font-family:@font-swatch5-font-family;
                             font-size:@font-swatch5-font-size;
@@ -640,10 +650,12 @@ div[role="main"] {
    6. Footer
    =============================== */
 
-footer {
+.footer {
+    float: left;
     margin: 1.5em 0 3em;
     padding: 0 60px;
     text-align: center;
+    width: 100%;
     h1 {
         border-bottom: 1px solid @color-swatch3;
         padding-bottom: 6px;
