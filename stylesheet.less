@@ -28,83 +28,6 @@ body {
     }
 }
 
-.wrapper { 
-    width: auto;
-    margin: 0; 
-}
-
-a {
-    font-family:@font-swatch5-font-family;
-    font-size:@font-swatch5-font-size;
-    font-weight: @font-swatch5-font-weight;
-    line-height:@font-swatch5-line-height;
-    color:@color-swatch3;
-    letter-spacing: @font-swatch5-letter-spacing;
-    text-decoration: none;
-}
-
-a:hover { text-decoration: underline; }
-
-h1, h2, h3, h4, h5, p {
-    margin: 0;
-    padding: 0 0 10px;
-}
-
-.bk-content-text p { color:@font-swatch5-color; }
-
-h1 {
-    font-family:@font-swatch1-font-family;
-    font-weight: @font-swatch1-font-weight;
-    color:@font-swatch1-color;
-    line-height:@font-swatch1-line-height;
-    letter-spacing: @font-swatch1-letter-spacing;
-    font-size: @font-swatch1-font-size;
-}
-
-h2 {
-    font-family:@font-swatch2-font-family;
-    font-size: @font-swatch2-font-size;
-    font-weight: @font-swatch2-font-weight;
-    line-height:@font-swatch2-line-height;
-    color: @font-swatch2-color;
-    letter-spacing: @font-swatch2-letter-spacing;
-}
-
-h3 {
-    font-family:@font-swatch3-font-family;
-    font-size:@font-swatch3-font-size;
-    font-weight: @font-swatch3-font-weight;
-    color: @font-swatch3-color;
-    line-height:@font-swatch3-line-height;
-    letter-spacing: @font-swatch3-letter-spacing;
-}
-
-h4 {
-    font-family:@font-swatch4-font-family;
-    font-size:@font-swatch4-font-size;
-    font-weight:@font-swatch4-font-weight;
-    line-height:@font-swatch4-line-height;
-    color:@font-swatch4-color;
-    letter-spacing: @font-swatch4-letter-spacing;
-}
-
-p {
-    font-family:@font-swatch5-font-family;
-    font-size:@font-swatch5-font-size;
-    font-weight: @font-swatch5-font-weight;
-    line-height:@font-swatch5-line-height;
-    color:@font-swatch5-color;
-    letter-spacing: @font-swatch5-letter-spacing;
-}
-
-ol, li, ul {
-    font-family:@font-swatch5-font-family;
-    font-size:@font-swatch5-font-size;
-    font-weight:@font-swatch5-font-weight;
-    line-height:@font-swatch5-line-height;
-    color:@font-swatch5-color;
-}
-
 /* ===============================
    2. Media Queries
    =============================== */
@@ -143,7 +66,7 @@ ol, li, ul {
 [class*="col"] + [class*="col"].end { float: left; }
 
 .three, .row .three { 
-    width: 22%; 
+    width: 21.25%; 
     @media @tablet {
         width: 100%;
         &:after {
@@ -168,23 +91,17 @@ ol, li, ul {
    4. Header
    =============================== */
 
-.header {
+.bk-header {
     background-color: @color-swatch6;
     height: 100%;
     padding: 3.5em 0;
-    position: relative;
+    position: fixed;
     text-align: center;
-    &:after {
-        background-color: @color-swatch6;
-        content: "";
-        width: 100%;
-        height: 10000px;
-        position: absolute;
-        top: 100%;
-        left: 0;
-    }
+    width: 21.25%;
     @media @tablet {
         padding-bottom: 0;
+        position: relative;
+        width: 100%;
     }
     .companyname {
         margin: 0.75em 0 1.5em;
@@ -194,12 +111,13 @@ ol, li, ul {
                 font-size:@font-swatch10-font-size;
                 font-weight: @font-swatch10-font-weight;
             &:hover {
-                    text-decoration: none;
-                }
+                text-decoration: none;
+            }
         }
     }
-    nav {
-        .widget {
+}
+nav {
+    .widget {
         &.extendednavigation {
             @media @desktop {
                 display: block;
@@ -235,20 +153,20 @@ ol, li, ul {
                     display: none;
                     /* Then these styles are applied */
                     width: 100%;
-                    background-color: fade(@color-swatch5, 10%);
-                    border: 1px solid fade(@color-swatch5, 35%);
+                    background-color: lighten(@color-swatch5, 10%);
+                    border: 1px solid @color-swatch5;
                     margin: 0;
                     padding: 60px 0 0;
                 }
                 li {
-                    border-bottom: 1px solid rgba(255,255,255, 0.15);
                     float: left;
                     display: block;
                     padding: 15px 0;
                     width: 100%;
                     text-align: center;
                     @media @tablet {
-                        background-color: fade(@color-swatch5, 10%);
+                        background-color: lighten(@color-swatch5, 10%);
+                        color: @color-swatch1;
                         width: 100%;
                         padding: 1em 0;
                         border: 1px solid fade(@color-swatch5, 35%);
@@ -278,13 +196,13 @@ ol, li, ul {
                                 display: block;
                                 width: 100%;
                                 color: black;
-                                    .box-sizing {
-                                        a {
-                                            display: block;
-                                            color: @color-swatch5;
-                                            padding: 0;
-                                        }
+                                .box-sizing {
+                                    a {
+                                        display: block;
+                                        color: @color-swatch5;
+                                        padding: 0;
                                     }
+                                }
                             }
                         }
                     }
@@ -298,18 +216,21 @@ ol, li, ul {
                         color: @color-swatch5;
                         line-height: @font-swatch6-line-height;
                         letter-spacing: @font-swatch6-letter-spacing;
+                        text-align: center;
+                        @media @tablet {
+                            color: @color-swatch1;
+                        }
                         .text {
                             &:hover {
-                                color: @color-swatch3;
                                 text-decoration: none;
                                 @media @tablet {
-                                    color: @color-swatch1;
                                     text-decoration: none;
+                                    color: @color-swatch1;
                                 }
                             }
                         }
                         @media @tablet {
-                            color: @color-swatch5;
+                            color: @color-swatch1;
                         }
                     }
 
@@ -333,10 +254,9 @@ ol, li, ul {
                                 text-decoration: none;
                             }
                             @media @tablet {
-                                color: @color-swatch5;
+                                color: @color-swatch1;
                             }
                             &:after {
-                                content: "▼";
                                 font-size: 8px;
                                 position: absolute;
                                 top: 1px;
@@ -353,7 +273,7 @@ ol, li, ul {
                                 color: @color-swatch3;
                                 text-decoration: none;
                                 @media @tablet {
-                                    color: @color-swatch5;
+                                    color: @color-swatch1;
                                 }
                             }
                         }
@@ -368,8 +288,8 @@ ol, li, ul {
                                 background-color: @color-swatch5;
                                 border-right: none;
                                 border-left: none;
-                                border-top: 1px solid fade(@color-swatch1, 25%);
-                                border-bottom: 1px solid fade(@color-swatch1, 25%);
+                                border-top: 1px solid darken(@color-swatch5, 1%);
+                                border-bottom: 1px solid darken(@color-swatch5, 1%);
                                 a {
                                     .text {
                                         color: @color-swatch1;
@@ -393,37 +313,24 @@ ol, li, ul {
                    display: none;
                    min-height: 60px;
                    @media @tablet {
+                       background-color: @color-swatch5;
                        display: block;
                        margin: 0 auto;
                        position: absolute;
                        width: 100%;
                        top: 0;
-                       &:hover {
+                        &:hover {
                            cursor: pointer;
                            display: block;
-                       }
-                       &:after {
-                            content:"MENU";
+                        }
+                        &:after {
+                            background: @color-swatch1;
+                            box-shadow: 0 6px 0 white, 0 12px 0 white;
                             color: @color-swatch1;
-                            font-family: @font-swatch6-font-family;
-                            font-size: @font-swatch6-font-size;
-                            font-weight: @font-swatch6-font-weight;
-                            color: white;
-                            line-height: 60px;
-                            letter-spacing: @font-swatch6-letter-spacing;
-                            text-align: center;
-                            width: 100%;
-                            height: 61px;
-                            position: absolute;
-                            top: 0;
-                            right: 0;
-                            left: 0;
-                            margin: 0 auto;
-                            background-color: @color-swatch5;
-                            display: inline-block;
-                            border: none;
-                            box-shadow: none;
-                       }
+                            right: 20px;
+                            top: 20px;
+                            width: 25px;
+                        }
                    }
                }
            }
@@ -431,74 +338,66 @@ ol, li, ul {
     }
 }
 
-
-
-
-
-    .widget {
-        &.menusections {
-            margin: 0;
-            ul {
-                display: block;
-                list-style: none;
-                padding-left: 0;
+.widget.menusections {
+    margin: 0;
+        ul {
+            display: block;
+            list-style: none;
+            padding: 1em 0 0.25em 0;
+            margin: 30px 0 20px;
+            max-width: 100%;
+            @media @tablet {
+                width: 100%;
+                margin: 10px 0 20px;
+            }
+            li {
+                padding: 0.8em 0;
                 margin: 0;
                 @media @tablet {
-                    /* Hidden until nav icon is clicked */
-                    display: none;
-                    /* Then these styles are applied */
-                    width: 100%;
-                    margin: 10px 0 0;
-                    background-color: darken(@color-swatch6, 5%);
+                    padding: 1.25em 0 1em;
                     border-bottom: 1px solid fade(@color-swatch5, 25%);
-                }
-                li {
-                    padding: 0.8em 0;
-                    margin: 0;
+                    text-align: center;
                     width: 100%;
-                    @media @tablet {
-                        padding: 1.25em 0 1em;
-                        border-bottom: 1px solid fade(@color-swatch5, 25%);
+                    margin: 0;
+                }
+                &:first-child a {
+                    padding-left: 0;
+                }
+                a {
+                    display: block;
+                    font-family: @font-swatch6-font-family;
+                    font-size: @font-swatch6-font-size;
+                    font-weight: @font-swatch6-font-weight;
+                    color: @font-swatch6-color;
+                    letter-spacing: @font-swatch6-letter-spacing;
+                    padding: 0 15px;
+                    &:hover {
+                        color: @color-swatch3;
+                        text-decoration: none;
                     }
-                    a {
+                }
+            }
+        }
+        a {
+            &.menu-pull {
+                display: none;
+                color: white;
+                @media @tablet {
+                    display: block;
+                    line-height: 65px;
+                    width: 100%;
+                    &:after {
                         display: block;
-                        font-family: @font-swatch6-font-family;
-                        font-size: @font-swatch6-font-size;
-                        font-weight: @font-swatch6-font-weight;
-                        color: @font-swatch6-color;
-                        letter-spacing: @font-swatch6-letter-spacing;
-                        padding: 0 15px;
+                        font-family: @font-swatch4-font-family;
+                        height: 65px;
+                        width: 100%;
                         &:hover {
-                            color: @color-swatch3;
                             text-decoration: none;
                         }
                     }
                 }
             }
-            a {
-                &.menu-pull {
-                    display: none;
-                    color: white;
-                    @media @tablet {
-                        display: block;
-                        line-height: 65px;
-                        width: 100%;
-                        &:after {
-                            background: darken(@color-swatch6, 10%);
-                            content:"MENU";
-                            display: block;
-                            font-family: @font-swatch4-font-family;
-                            height: 65px;
-                            width: 100%;
-                            &:hover {
-                                text-decoration: none;
-                            }
-                        }
-                    }
-                }
-            }
         }
-    }
 }
 
 /* ===============================
@@ -511,6 +410,7 @@ div[role="main"] {
     padding: 5%;
     @media @tablet {
         margin: 0;
+        padding-top: 10%;
     }
     .widget.menu {
         margin:0 auto;
@@ -719,31 +619,6 @@ div[role="main"] {
                                     padding: 0 0.5em;
                                     width: auto;
                                 }
-                                .nutfree-icon {
-                                    &:before {
-                                        content: "nf";
-                                    }  
-                                }
-                                .vegetarian-icon {
-                                    &:before {
-                                        content: "v";
-                                    }
-                                }
-                                .vegan-icon {
-                                    &:before {
-                                        content: "vegan";
-                                    }
-                                }
-                                .glutenfree-icon {
-                                    &:before {
-                                        content: "gf";
-                                    }
-                                }
-                                .dairyfree-icon {
-                                    &:before {
-                                        content: "df";
-                                    }
-                                }
                                 .not-spicy-icon.dietary-icon {
                                     display: none;
                                 }
@@ -751,29 +626,14 @@ div[role="main"] {
                                     border-color: orange;
                                     color: orange;
                                 }
-                                .medium-spicy-icon {
-                                    &:before {
-                                        content: "ms";
-                                    }
-                                }
                                 .hot-icon.dietary-icon {
                                     border-color: #860b14;
                                     color: #860b14;
                                 }
-                                .hot-icon {
-                                    &:before {
-                                        content: "s";
-                                    }
-                                }
                                 .spicy-icon.dietary-icon {
                                     border-color: green;
                                     color: green;
-                                }
-                                .spicy-icon {
-                                    &:before {
-                                        content: "ls";
-                                    }
-                                }                
+                                }               
                             } /* end menu-section-item-dietary-props */
                             .menu-item-description, .menu-subsection-item-description {
                                 margin-bottom: 0.5em;
@@ -836,10 +696,6 @@ div[role="main"] {
                     margin: 2.5em 0;
                     padding: 20px;
                     width: 100%;
-                    @media @tablet { 
-                        margin: 0;
-                        padding: 0px;
-                    }
                     p {    /* menu-note */
                         float: left;
                         width: 100%;
@@ -885,10 +741,108 @@ div[role="main"] {
 }
 
 /* ===============================
+   Blog
+   =============================== */
+
+.widget {
+    &.bloglistposts {
+        .blog-post-item {
+            border-bottom: 1px dotted fade(@color-swatch5, 50%);
+        }
+
+    }
+}
+.blog-post-item {
+    margin: 1.5em 0;
+    padding-bottom: 1em;
+    h2 {
+        margin: 0.5em 0 0.25em;
+        a {
+            font-family: @font-swatch2-font-family;
+            font-size: @font-swatch2-font-size;
+            font-weight: @font-swatch2-font-weight;
+            line-height: @font-swatch2-line-height;
+            color: @font-swatch2-color;
+            letter-spacing: @font-swatch2-letter-spacing;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+.blog-post-metadata {
+    background-color: transparent;
+    background-image: none;
+    margin-top: 0;
+    text-align: left;
+    time {
+        display: block;
+        margin: 0.75em 0;
+    }
+    li {
+        display: inline;
+    }
+}
+
+.blog-list-footer {
+    background-color: transparent;
+    background-image: none;
+}
+
+.blog-post-more-link {
+    float: left;
+    width: 100%;
+}
+
+.blogsearch {
+    form {
+        button {
+            padding: 10px;
+            color: @font-swatch7-color;
+            font-size: @font-swatch6-font-size;
+            font-weight: @font-swatch6-font-weight;
+            line-height: @font-swatch6-line-height;
+            background-color: @font-swatch7-background-color;
+            border: none;
+        }
+    }
+    label {
+        display: block;
+    }
+    input {
+        display: inline-block;
+        height: 42px;
+        width: 80%;
+        @media @mobile {
+            width: 65%;
+        }
+    }
+    .blog-search-submit-button {
+        display: inline-block;
+        margin-left: 2%;
+        width: 15%;
+        @media @mobile {
+            width: 30%;
+        }
+    }
+} 
+.blog-post-feature-image-wrap {  /* Blog post feature image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 250px;
+    min-width: 25%;
+    img {
+        display: none;
+    }
+}
+
+/* ===============================
    6. Footer
    =============================== */
 
-.footer {
+.bk-footer {
     float: left;
     margin: 1.5em 0 3em;
     padding: 0 60px;
@@ -915,14 +869,7 @@ div[role="main"] {
 
 .widget {
     &.contactform fieldset button.btn, &.dropbox button, &.paypalbuynow .widget.button.paypal, &.signupform button.btn {
-        background-color: @color-swatch3;
         color: @color-swatch1;
-        &:hover {
-            background-color: lighten(@color-swatch3, 10%);
-        }
-    }
-    &.button button.btn, .tweet a {
-        background-color: fade(@color-swatch4, 15%);
     }
     .line {
         background-color: fade(@color-swatch4, 25%);
@@ -932,4 +879,122 @@ div[role="main"] {
             background-color: none;
         }
     }
+}
+
+/* ===============================
+   SLIDESHOW WIDGET
+   =============================== */
+
+.widget.responsiveslideshow {
+    .slideshow-image-list,
+    .slideshow-widget {
+        min-height: 450px;
+        @media @tablet {
+            min-height: 350px;
+        }
+        @media @mobile {
+            min-height: 280px;
+            height: 280px;
+        }
+    }
+    .title {
+        display: block;
+    }
+    .content-wrapper {
+        background: rgba(0,0,0,0.5);
+    }
+    .slideshow-widget {
+        /* Arrows */
+        .btn-prev,
+        .btn-next {
+            font-size: 0;
+            z-index: 11;
+            text-indent: -99999px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+        }
+        .btn-prev {
+            &:after {
+                content: "\2190";
+                color: #fff;
+                top: 7px;
+            }
+        }
+        .btn-next {
+            &:after {
+                content: "\2192";
+                color: #fff;
+                top: 7px;
+            }
+        }
+        /* Play Button */
+        .btn-play {
+            background: rgba(0,0,0,0.5);
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            margin: 0 auto;
+            height: 60px;
+            width: 80px;
+            @media @mobile {
+                left: 38%;
+            }
+            &:after {
+                color: #fff;
+                letter-spacing: -4px;
+                top: 2px;
+            }
+        }
+    }
+    /* Slideshow Controls */
+    .slideshow-widget-controls {
+        .dot {
+            width: 11px;
+            height: 11px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            &.selected {
+                background-color: @color-swatch1;
+            }
+        }
+    }
+}
+
+/* ===============================
+  9. Misc
+   =============================== */
+
+hr.line {
+    background-color: fade(@color-swatch6, 25%);
+}
+
+.youtube, .map {
+    margin: 1.5em 0;
+}
+
+/* ===============================
+   10. Forms & Buttons
+   =============================== */
+
+input, textarea {
+    background: white;
+    border: 1px solid fade(@color-swatch5, 40%) !important;
+    color: #2d2d2d;
+}
+
+fieldset {
+    padding: 1.5em 0;
+}
+
+.signupform fieldset button, fieldset button {
+    height: 45px;
+}
+
+.widget.profile form button {
+    padding-top: 8px;
 }
