@@ -16,8 +16,7 @@
         </header>
     </div>
     <div role ="main" class="nine cols">
-        {{widget('menusections', 'menusections1', {})|raw}}
-        {{widget('menu', 'menu1', {})|raw}}
+        {{zone('main')|raw}}
         <footer class="bk-footer">
             {{widget('content', 'footer-header', {content: '<h1>Contact Us</h1>', lines: 'all'})|raw}}
             {{widget('companyaddress', 'footer-address', {})|raw}}

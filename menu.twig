@@ -7,13 +7,10 @@
     <header class="three columns">
         {{widget('logo', 'lochtay-logo', {"defaultlogo": asset('images/lochtay-logo.png')})|raw}}
         {{widget('companyname', 'oyster-bar', {"business": '<h1>Loch Tay</h1>'})|raw}}
-        <nav class="text-center">
-            {{widget('menusections', 'menusections1', {})|raw}}
-        </nav>
     </header>
 
     <div role ="main" class="nine columns">
-        {{widget('menu', 'menu1', {})|raw}}
+        {{zone('main')|raw}}
         <footer>
             {{widget('content', 'footer-header', {content: '<h1>Contact Us</h1>', lines: 'all'})|raw}}
             {{widget('companyaddress', 'footer-address', {})|raw}}
