@@ -27,7 +27,7 @@ body {
     background-image: image('/images/lochtay-bg.jpg');
     font-family:@font-swatch5-font-family;
     margin: 0;
-    padding: 0 4% 0 0;
+    padding: 0;
     @media @tablet {
         padding-right: 0;
     }
@@ -58,31 +58,37 @@ body {
 *, *:before, *:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 .row { 
-    max-width: 1400px; 
-    max-width: 100%; 
-    @media @tablet {
+    margin: 0;
+    height: 100%;
+    @media @desktop {
         padding: 4%;
         width: 100%;
     }
- }
-.row .row { 
-    width: auto; 
-    max-width: none; 
-    min-width: 0; 
-    margin: 0 -15px; 
+    .row .row { 
+        width: auto; 
+        max-width: none; 
+        min-width: 0; 
+        margin: 0 -15px; 
+    }
 }
+
+.contain {
+    max-width: 1800px;
+}
+
 .col, .cols { 
     float: left; 
     min-height: 1px; 
     position: relative; 
 }
 
-[class*="col"] + [class*="col"]:last-child { float: right; }
-[class*="col"] + [class*="col"].end { float: left; }
+[class*="cols"] + [class*="cols"].end { float: left; }
 
-.three, .row .three { 
-    width: 21.25%; 
-    @media @tablet {
+.three, .row .three {
+    width: 25%;
+    padding-left: 0;
+    padding-right: 0; 
+    @media @desktop {
         width: 100%;
         &:after {
             position: relative;
@@ -92,15 +98,30 @@ body {
     }
 }
 .nine, .row .nine { 
-    width: 78%; 
-    @media @tablet {
+    position: relative;
+    max-width: 1200px;
+    width: 70%;
+    &:after {
+        content: "";
+        width: 100%;
+    }
+    @media @desktop {
         width: 100%;
     }
 }
 
-.row { *zoom: 1; }
-.row:before, .row:after { content: " "; display: table; }
-.row:after { clear: both; }
+.row { 
+    *zoom: 1; 
+    &:before {
+        content: " "; 
+        display: table; 
+    }
+    &:after {
+        content: " "; 
+        display: table;
+        clear: both;
+    }
+}
 
 /* ===============================
    4. Header
@@ -109,22 +130,26 @@ body {
 .bk-header {
     background-color: @color-swatch6;
     height: 100%;
+    overflow-x: scroll;
     padding: 3.5em 0;
     position: fixed;
     text-align: center;
-    width: 21.25%;
-    @media @tablet {
+    min-width: 245px;
+    width: 25%;
+    z-index: 9999;
+    @media @desktop {
         padding-bottom: 0;
         position: relative;
+        min-width: 100%;
         width: 100%;
     }
     .companyname {
         margin: 0.75em 0 1.5em;
         a {
             color: @font-swatch10-color;
-                font-family:@font-swatch10-font-family;
-                font-size:@font-swatch10-font-size;
-                font-weight: @font-swatch10-font-weight;
+            font-family:@font-swatch10-font-family;
+            font-size:@font-swatch10-font-size;
+            font-weight: @font-swatch10-font-weight;
             &:hover {
                 text-decoration: none;
             }
@@ -139,7 +164,7 @@ nav {
                 float: left;
                 width: 100%;
             }
-            @media @tablet {
+            @media @desktop {
                 margin: 0;
             }
         }
@@ -149,7 +174,7 @@ nav {
             margin: 0;
             min-height: 60px;
             z-index: 99999;
-            @media @tablet {
+            @media @desktop {
                 background-color: none;
                 border: none;
             }
@@ -164,7 +189,7 @@ nav {
                 text-align: left;
                 padding: 0;
                 width: 100%;
-                @media @tablet {
+                @media @desktop {
                     /* Hidden until nav icon is clicked */
                     display: none;
                     /* Then these styles are applied */
@@ -180,7 +205,7 @@ nav {
                     padding: 15px 0;
                     width: 100%;
                     text-align: center;
-                    @media @tablet {
+                    @media @desktop {
                         background-color: lighten(@color-swatch5, 10%);
                         color: @color-swatch1;
                         width: 100%;
@@ -189,12 +214,18 @@ nav {
                         border-bottom: 1px dotted fade(@color-swatch5, 35%);
                     }
                     &:last-child {
-                        @media @tablet {
+                        @media @desktop {
                             border-bottom: 1px solid fade(@color-swatch5, 25%);
                         }
                     }
-
+                    &.folder:hover {
+                        padding-bottom: 0;
+                    }
                     &:hover {
+                        background: lighten(@color-swatch5, 5%);
+                        a {
+                            color: @color-swatch7;
+                        }
                         ul {
                             display: block;
                             position: absolute;
@@ -205,8 +236,11 @@ nav {
                             padding: 0;
                             margin: 10px 0 0 0;
                             width: 100%;
-                            @media @tablet {
+                            @media @desktop {
                                 color: @color-swatch5;
+                            }
+                            @media @tablet {
+                                background: transparent;
                             }
                             li {
                                 display: block;
@@ -233,68 +267,72 @@ nav {
                         line-height: @font-swatch6-line-height;
                         letter-spacing: @font-swatch6-letter-spacing;
                         text-align: center;
-                        @media @tablet {
+                        &:hover {
+                            color: @color-swatch1;
+                        }
+                        @media @desktop {
                             color: @color-swatch1;
                         }
                         .text {
                             &:hover {
                                 text-decoration: none;
-                                @media @tablet {
+                                @media @desktop {
                                     text-decoration: none;
                                     color: @color-swatch1;
                                 }
                             }
                         }
-                        @media @tablet {
+                        @media @desktop {
                             color: @color-swatch1;
                         }
                     }
 
                     &.folder {
-                        /* Folder dropdown arrow BG style goes Here */  
-                        margin-right: 10px;            
+                        /* Folder dropdown arrow BG style goes Here */           
                         cursor: pointer;
                         background-image: none;
+                        &:hover .text {
+                            color: @color-swatch7;
+                        }
                         .text {
                             display: block;
                             padding: 0 15px;
                             font-family: @font-swatch6-font-family;
                             font-size: @font-swatch6-font-size;
                             font-weight: @font-swatch6-font-weight;
-                            color: @color-swatch5;
                             line-height: @font-swatch6-line-height;
                             letter-spacing: @font-swatch6-letter-spacing;
                             position: relative;
                             text-align: center;
                             &:hover {
-                                text-decoration: none;
-                            }
-                            @media @tablet {
                                 color: @color-swatch1;
-                            }
-                            &:after {
-                                font-size: 8px;
-                                position: absolute;
-                                top: 1px;
-                                display: block;
-                                z-index: 9999999;
-                                right: 25px;
-                                color: @color-swatch5;
-                                @media @tablet {
-                                    font-size: 10px;
-                                    color: @color-swatch5;
-                                }
-                            }
-                            &:hover {
-                                color: @color-swatch3;
                                 text-decoration: none;
-                                @media @tablet {
-                                    color: @color-swatch1;
+                            }
+                            @media @desktop {
+                                color: @color-swatch1;
+                                margin-right: 0;
+                            }
+                                &:hover {
+                                    color: @color-swatch7;
                                 }
+                            }
+                        &:after {
+                            border-top-color: fade(@color-swatch5, 65%);
+                            font-size: 10px;
+                            position: absolute;
+                            top: 25px;
+                            display: block;
+                            z-index: 9999999;
+                            right: 25px;
+                            @media @desktop {
+                                border-top-color: fade(@color-swatch7, 65%);
                             }
                         }
                         ul {
+                            border: 1px solid darken(@color-swatch5, 5%);
                             padding: 0;
+                            position: relative;
+                            margin-top: 15px;
                             @media @tablet {
                                 background-color: @color-swatch5;
                                 margin-top: 15px;
@@ -304,17 +342,21 @@ nav {
                                 background-color: @color-swatch5;
                                 border-right: none;
                                 border-left: none;
-                                border-top: 1px solid darken(@color-swatch5, 1%);
-                                border-bottom: 1px solid darken(@color-swatch5, 1%);
+                                border-top: 1px solid darken(@color-swatch5, 5%);
+                                border-bototm: 1px solid darken(@color-swatch5, 5%);
+                                margin-right: 0;
+                                &:hover {
+                                    background: darken(@color-swatch5, 2%);
+                                }
                                 a {
+                                    &:hover {
+                                        color: @color-swatch1;
+                                    }
                                     .text {
                                         color: @color-swatch1;
                                         padding: 0;
                                         &:after {
                                             content: "";
-                                        }
-                                        &:hover {
-                                            color: @color-swatch1;
                                         }
                                     }
                                 }
@@ -328,7 +370,7 @@ nav {
                &.pull {
                    display: none;
                    min-height: 60px;
-                   @media @tablet {
+                   @media @desktop {
                        background-color: @color-swatch5;
                        display: block;
                        margin: 0 auto;
@@ -343,6 +385,9 @@ nav {
                             background: @color-swatch1;
                             box-shadow: 0 6px 0 white, 0 12px 0 white;
                             color: @color-swatch1;
+                            content :"";
+                            position: absolute;
+                            height: 3px;
                             right: 20px;
                             top: 22px;
                             width: 25px;
@@ -356,67 +401,67 @@ nav {
 
 .widget.menusections {
     margin: 0;
-        ul {
-            display: block;
-            list-style: none;
-            padding: 1em 0 0.25em 0;
-            margin: 30px 0 20px;
-            max-width: 100%;
+    ul {
+        display: block;
+        list-style: none;
+        padding: 1em 0 0.5em 0;
+        margin: 0;
+        max-width: 100%;
+        text-align: center;
+        @media @tablet {
+            width: 100%;
+            margin: 10px 0 20px;
+        }
+        li {
+            padding: 0.8em 0;
+            margin: 0;
             @media @tablet {
+                padding: 1.25em 0 1em;
+                border-bottom: 1px solid fade(@color-swatch5, 25%);
                 width: 100%;
-                margin: 10px 0 20px;
-            }
-            li {
-                padding: 0.8em 0;
                 margin: 0;
+            }
+            &:first-child a {
+                padding-left: 0;
                 @media @tablet {
-                    padding: 1.25em 0 1em;
-                    border-bottom: 1px solid fade(@color-swatch5, 25%);
-                    text-align: center;
-                    width: 100%;
-                    margin: 0;
+                    padding: 0;
                 }
-                &:first-child a {
-                    padding-left: 0;
-                    @media @tablet {
-                        padding: 0;
-                    }
+            }
+            a {
+                display: block;
+                font-family: @font-swatch6-font-family;
+                font-size: @font-swatch6-font-size;
+                font-weight: @font-swatch6-font-weight;
+                color: @font-swatch6-color;
+                letter-spacing: @font-swatch6-letter-spacing;
+                padding: 0 15px;
+                &:hover {
+                    color: @color-swatch3;
+                    text-decoration: none;
                 }
-                a {
+            }
+        }
+    }
+    a {
+        &.menu-pull {
+            display: none;
+            color: @color-swatch7;
+            @media @tablet {
+                display: block;
+                line-height: 65px;
+                width: 100%;
+                &:after {
                     display: block;
-                    font-family: @font-swatch6-font-family;
-                    font-size: @font-swatch6-font-size;
-                    font-weight: @font-swatch6-font-weight;
-                    color: @font-swatch6-color;
-                    letter-spacing: @font-swatch6-letter-spacing;
-                    padding: 0 15px;
+                    font-family: @font-swatch4-font-family;
+                    height: 65px;
+                    width: 100%;
                     &:hover {
-                        color: @color-swatch3;
                         text-decoration: none;
                     }
                 }
             }
         }
-        a {
-            &.menu-pull {
-                display: none;
-                color: white;
-                @media @tablet {
-                    display: block;
-                    line-height: 65px;
-                    width: 100%;
-                    &:after {
-                        display: block;
-                        font-family: @font-swatch4-font-family;
-                        height: 65px;
-                        width: 100%;
-                        &:hover {
-                            text-decoration: none;
-                        }
-                    }
-                }
-            }
-        }
+    }
 }
 
 /* ===============================
@@ -427,12 +472,13 @@ div[role="main"] {
     background-color: @color-swatch1;
     margin: 3em 0;
     padding: 5%;
-    @media @tablet {
+    position: relative;
+    @media @desktop {
         margin: 0;
-        padding-top: 10%;
+        padding-top: 3em;
     }
     .widget.menu {
-        margin:0 auto;
+        margin: 0 auto;
         padding: 2.25em 0 1em;
 
         .main {
@@ -486,6 +532,17 @@ div[role="main"] {
                 .menu-items { /* ol */
                     display: block;
                     position: relative;
+                    column-count: 2;
+                    column-gap: 60px;
+                   -moz-column-count: 2;
+                   -moz-column-gap: 60px;
+                   -webkit-column-count: 2;
+                   -webkit-column-gap : 60px;
+                   @media @tablet {
+                        column-count: 1;
+                       -moz-column-count: 1;
+                       -webkit-column-count: 1;
+                   }
                     li {    /* menu-item */
                         position: relative;
                         display: block;
@@ -506,8 +563,8 @@ div[role="main"] {
                             h3 {
                                 padding: 1.5em;
                                 width: auto;
-                                margin-top: 0 !important;
-                                margin-right: 1em !important;
+                                margin-top: 0;
+                                margin-right: 1em;
                             }
                         }   /* end menu-item-promoted */
 
@@ -584,7 +641,7 @@ div[role="main"] {
                                 padding: 0;
                                 float: left;
                                 .dietary-icon {
-                                    background-color: white;
+                                    background-color: @color-swatch7;
                                     border: 2px solid @color-swatch6;
                                     margin: 5px 5px 0 0;
                                     padding: 0 0.5em;
@@ -716,7 +773,6 @@ div[role="main"] {
    =============================== */
 
 .bk-footer {
-    float: left;
     margin: 1.5em 0 3em;
     padding: 0;
     text-align: center;

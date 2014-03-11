@@ -1,0 +1,31 @@
+
+{% extends "layout.twig" %}
+
+{% block content %}
+
+<div class="row contain">
+    <div class="three cols">
+        <header class="bk-header">
+            {{widget('logo', 'lochtay-logo', {"defaultlogo": asset('images/lochtay-logo.png')})|raw}}
+            {{widget('companyname', 'loch-tay', {"business": "profile"})|raw}}
+            <nav class="text-center">
+            {% if pages|length > 1 %}
+                {{widget('extendednavigation', 'navigationheader', {})|raw}}
+            {% endif %}
+            </nav>
+        </header>
+    </div>
+    <div class="nine cols">
+        <div role ="main">
+            {{widget('menusections', 'menusections1', {})|raw}}
+            {{widget('menu', 'menu1', {})|raw}}
+            <footer class="bk-footer">
+                {{widget('content', 'footer-header', {content: '<h1>Contact Us</h1>', lines: 'all'})|raw}}
+                {{widget('companyaddress', 'footer-address', {})|raw}}
+                {{widget('clicktocall', 'footer-phone', {phoneText: '0800 123 123'})|raw}}
+            </footer>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}
